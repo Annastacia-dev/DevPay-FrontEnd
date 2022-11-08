@@ -1,4 +1,5 @@
 import React from 'react'
+import '../css/navbar.css'
 import { Container, Navbar, Nav } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 
@@ -7,7 +8,7 @@ function Navlink() {
         <>
             <Navbar className="navbar" bg="light" expand="lg">
                 <Container>
-                    <NavLink  className= "nav-link  fw-bold fs-5" to="/home">Dev Pay</NavLink>
+                    <NavLink  className= "nav-link  fw-bold fs-1" to="/home">Dev Pay</NavLink>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
