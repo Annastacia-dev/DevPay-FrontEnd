@@ -32,8 +32,12 @@
 import React from 'react'
 =======
 import React from 'react'
+<<<<<<< HEAD
+
+=======
 import '../css/navbar.css'
 >>>>>>> dev
+>>>>>>> 202e701eaaa6c59a9f0d794086467d07bb67ac95
 import { Container, Navbar, Nav } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 

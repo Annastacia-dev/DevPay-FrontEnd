@@ -2,12 +2,18 @@
 import React, { useState } from 'react';
 import { Route,Routes} from "react-router-dom";
 import Navlink from './Navlink';
-import  './App.css';
 import Home from './Home';
 import About from './About';
 import Service from './Service'; 
+<<<<<<< HEAD
+import LogIn from './LogIn';
+import SignUp from './SignUp';
+import '../css/App.css'
+
+=======
 import { Login } from "./Login";
 import { Signup } from "./Signup";
+>>>>>>> dev
 
 
 
