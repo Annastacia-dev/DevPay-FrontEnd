@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Table({description,rate,price,amount}) {
+function Table({list}) {
   return (
     <>
     <table width="100%" className="mb-10">
@@ -12,26 +12,20 @@ function Table({description,rate,price,amount}) {
             <td className="font-bold">Amount</td>
           </tr>
         </thead>
-      <tbody>
-      <tr>
-       <td>{description}</td>
-       <td>{rate}</td>
-       <td>{price}</td>
-       <td>{amount}</td>
-      </tr>
+        {list.map(({  id, description, rate, price, amount }) => (
+          <React.Fragment key={id}>
+            <tbody>
+              <tr className="h-10">
+                <td>{description}</td>
+                <td>{rate}</td>
+                <td>{price}</td>
+                <td className="amount">{amount}</td>
 
-
-      </tbody>
-
-    </table>
-    
-    
-    
-    
-    
-    
-    
-    
+              </tr>
+            </tbody>
+          </React.Fragment>
+        ))}
+      </table>
     </>
   )
 }

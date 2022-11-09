@@ -39,14 +39,15 @@ function App () {
          <Route  path='/home' element={<Home />} ></Route>
         <Route  path='/' element={<Home />} ></Route>
         <Route  path='/about' element={<About />} ></Route>
+        <Route  path='/service' element={<Service/>} ></Route>
         <Route path="/signin" element={<SignIn changeUser={changeUser} />} />
         <Route path="/signup" element={<SignUp />} />      
-        {
+        {/* {
           developers.map(dev => {
             return <Route key={dev.id} path={`/${dev.id}/service`} element={<Service dev={dev}  />} />
           }
           )
-        }
+        } */}
       </Routes>  
     
       

@@ -29,6 +29,7 @@ function Service( { dev } ) {
     const [description, setDescription] = useState("")
     const [rate, setRate] = useState("")
     const [price, setPrice] = useState("")
+    const [list, setList] = useState([])
     const [amount, setAmount] = useState("")
 
 
@@ -46,7 +47,7 @@ function Service( { dev } ) {
                             <Developer name={name} address={address} />
                             <ClientDetails clientName={clientName} clientAddress={clientAddress} />
                             <Dates invoiceDate={invoiceDate} invoiceNumber={invoiceNumber} dueDate={dueDate} />
-                            < Table description={description}  rate={rate} price={price} amount={amount}/>
+                            < Table description={description}  rate={rate} price={price} amount={amount}  list={list}/>
                             <Job notes={job} />
                             <Footer
                                 name={name}
@@ -244,6 +245,8 @@ function Service( { dev } ) {
                                         setPrice={setPrice}
                                         amount={amount}
                                         setAmount={setAmount}
+                                        list={list}
+                                        setList={setList}
                                        
                                     />
                                 </article>
