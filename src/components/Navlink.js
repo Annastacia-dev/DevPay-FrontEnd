@@ -23,12 +23,10 @@ function Navlink() {
                             </li>
                             <div  className='nav-item my-2 my-md-0 ml-auto'>
                             <NavLink className="btn btn-outline-dark me-5 mx-auto mr-4 ml-2" to="/login">
-                                LogIn</NavLink>
-                           </div> 
-                           <div  className='my-2 my-md-0 ml-auto'>
-                           <NavLink className="btn btn-outline-dark me-5 mx-auto mr-4 ml-2" to="/signup">
-                                SignUP</NavLink>
-                           </div>  
+                                Login</NavLink>
+                           </div>
+
+
 
                         </Nav>
                     </Navbar.Collapse>
