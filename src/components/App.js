@@ -1,11 +1,11 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { Route,Routes} from "react-router-dom";
 import Navlink from './Navlink';
 import Home from './Home';
 import About from './About';
 import Service from './Service'; 
-import LogIn from './LogIn';
-import SignUp from './SignUp';
+import SignIn from './SignIn';
+import SignUp from './SignUP'
 import '../css/App.css'
 
 
@@ -13,6 +13,24 @@ import '../css/App.css'
 
 
 function App () {
+
+
+  const [currentUser, setCurrentUser] = useState(null)
+
+  const changeUser = (user) => {
+    setCurrentUser(user)
+  }
+
+  // Set developer as user , fetch user from database https://9292/developers
+
+  const [developers, setDevelopers] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:9292/developers')
+      .then(response => response.json())
+      .then(data => setDevelopers(data))
+  }, [])
+
   return (
     <div>
     
@@ -21,9 +39,14 @@ function App () {
          <Route exact='true' path='/home' element={<Home />} ></Route>
         <Route exact='true' path='/' element={<Home />} ></Route>
         <Route exact='true' path='/about' element={<About />} ></Route>
-        <Route exact='true' path='/service' element={<Service />} ></Route>
-        <Route exact='true' path='/login' element={<LogIn />} ></Route>
-        <Route exact='true' path='/signup' element={< SignUp />} ></Route>
+        <Route path="/signin" element={<SignIn changeUser={changeUser} />} />
+        <Route path="/signup" element={<SignUp />} />      
+        {
+          developers.map(dev => {
+            return <Route key={dev.id} path={`/${dev.id}/service`} element={<Service  />} />
+          }
+          )
+        }
       </Routes>  
     
       

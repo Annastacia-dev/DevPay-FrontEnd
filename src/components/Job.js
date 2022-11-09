@@ -24,12 +24,3 @@ export default Job
 
 
 
-// import React from 'react'
-
-// const Notes = ({notes}) => {
-//     return (
-//       
-//     )
-// }
-
-// export default Notes
