@@ -11,7 +11,7 @@ import '../css/App.css'
 import TableForm from './TableForm'
 
 
-function Service() {
+function Service( { dev } ) {
     const [showInvoice, setShowInvoice] = useState(true)
     const [name, setName] = useState('Elon Musks')
     const [address, setAddress] = useState('Nairobi')

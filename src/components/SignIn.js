@@ -8,14 +8,14 @@ const SignIn = ({ changeUser }) => {
 
   const [error, setError] = useState(null)
 
-  const findCurrentUser = async (username) => {
-    const response = await fetch(`http://localhost:9292/developers/${username}`)
+  const findCurrentUser = async (email) => {
+    const response = await fetch(`http://localhost:9292/developers/${email}`)
     if (response.status === 401) {
       setError('Cannot find user with that username!')
     } else {
       const user = await response.json()
       changeUser(user)
-      navigate(`${user.id}/service`)
+      navigate(`/${user.id}/service`)
     }
    
   }

@@ -75,7 +75,7 @@ const SignUp = () => {
             <button type='submit' className="btn solid" onClick={handleSubmission}>Sign Up</button>
             <div  className='link-to-signup'>
             <p>Aleady have an account?
-                <Link to="/signup" className="link">Sign In</Link>
+                <Link to="/signin" className="link">Sign In</Link>
             </p>
             </div>
             </div>
