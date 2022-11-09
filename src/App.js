@@ -34,7 +34,7 @@ function App () {
      <Description />
      <Footer />
       {/* <Routes>
-         <Route exact='true' path='/home' element={<Home />} ></Route>
+        <Route exact='true' path='/home' element={<Home />} ></Route>
         <Route exact='true' path='/' element={<Home />} ></Route>
         <Route exact='true' path='/about' element={<About />} ></Route>
         <Route exact='true' path='/service' element={<Service />} ></Route>
