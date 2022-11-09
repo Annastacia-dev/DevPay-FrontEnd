@@ -37,11 +37,7 @@ function App () {
         <Route exact='true' path='/signup' element={< Signup />} ></Route>
       </Routes>  
     
-      <div className="App">
-      {
-        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Signup onFormSwitch={toggleForm} />
-      }
-      </div>
+ 
     </div>
   );
 }
