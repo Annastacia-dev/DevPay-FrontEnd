@@ -1,12 +1,14 @@
 import React from 'react'
 import { Route,Routes} from "react-router-dom";
 import Navlink from './Navlink';
-import  './App.css';
 import Home from './Home';
 import About from './About';
 import Service from './Service'; 
 import LogIn from './LogIn';
 import SignUp from './SignUp';
+import '../css/App.css'
+
+
 
 
 
