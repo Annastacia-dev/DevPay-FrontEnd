@@ -1,16 +1,15 @@
 import React,{useEffect,useState} from 'react'
 import { Route,Routes} from "react-router-dom";
 import Navlink from './Navlink';
-import Home from './Home';
+// import Home from './Home';
 import About from './About';
 import Service from './Service'; 
 import SignIn from './SignIn';
 import SignUp from './SignUP'
+import Description from './Description';
 import '../css/App.css'
-
-
-
-
+import Footer from './Footer';
+import Home from './Home';
 
 function App () {
 
@@ -32,28 +31,25 @@ function App () {
   }, [])
 
   return (
+    
     <div>
     
      < Navlink/>
+     < Footer />
       <Routes>
-         <Route exact='true' path='/home' element={<Home />} ></Route>
-        <Route exact='true' path='/' element={<Home />} ></Route>
-        <Route exact='true' path='/about' element={<About />} ></Route>
+        <Route path='/home' element={<Home />} ></Route>
+        <Route path="/" exact component={Home} />
+        <Route path='/services' element={<Service />} ></Route>
+        <Route path='/about' element={<About />} ></Route>
         <Route path="/signin" element={<SignIn changeUser={changeUser} />} />
         <Route path="/signup" element={<SignUp />} />      
-        {
+        {/* {
           developers.map(dev => {
             return <Route key={dev.id} path={`/${dev.id}/service`} element={<Service  />} />
           }
           )
-        }
+        } */}
       </Routes>  
-    
-      
-
-
-
-
     </div>
   )
 }
