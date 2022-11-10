@@ -26,8 +26,6 @@ function Navlink() {
                                 SignUP</NavLink>
                            </div> 
                            
-                             
-
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
