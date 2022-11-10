@@ -37,15 +37,21 @@ function App () {
      < Navlink/>
      < Footer />
       <Routes>
+<<<<<<< HEAD
         <Route path='/home' element={<Home />} ></Route>
         <Route path="/" exact component={Home} />
         <Route path='/services' element={<Service />} ></Route>
         <Route path='/about' element={<About />} ></Route>
+=======
+         <Route  path='/home' element={<Home />} ></Route>
+        <Route  path='/' element={<Home />} ></Route>
+        <Route  path='/about' element={<About />} ></Route>
+>>>>>>> 409db39d6fa83742ff9c89f38add8b83c6cf7788
         <Route path="/signin" element={<SignIn changeUser={changeUser} />} />
         <Route path="/signup" element={<SignUp />} />      
         {/* {
           developers.map(dev => {
-            return <Route key={dev.id} path={`/${dev.id}/service`} element={<Service  />} />
+            return <Route key={dev.id} path={`/${dev.id}/service`} element={<Service dev={dev}  />} />
           }
           )
         } */}
