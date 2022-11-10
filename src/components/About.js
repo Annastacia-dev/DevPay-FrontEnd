@@ -49,7 +49,7 @@ function About() {
 // <p>We will keep posting more important posts on my Website for all of you. Please give your support and love.</p>
 // <p>Thanks For Visiting Our Site<br></br>
 Have a nice day!</p>
-// <p>Copyright &copy; 2022 All rights reserved by DevPay.Inc</p>
+ <p>Copyright &copy; 2022 All rights reserved by DevPay.Inc</p>
 // </footer>
 </>
 
