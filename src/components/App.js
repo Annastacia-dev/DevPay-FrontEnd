@@ -44,15 +44,15 @@ function App () {
         <Route  path='/about' element={<About />} ></Route>
         <Route  path='/clientform' element={<ClientForm/>} ></Route>
         <Route  path='/service' element={<Service/>} ></Route>
-        <Route  path='/invoice' element={<Invoice/>} ></Route>
+        {/* <Route  path='/invoice' element={<Invoice/>} ></Route> */}
         <Route path="/signin" element={<SignIn changeUser={changeUser} />} />
         <Route path="/signup" element={<SignUp />} />      
-        {/* {
+        {
           developers.map(dev => {
-            return <Route key={dev.id} path={`/${dev.id}/service`} element={<Service dev={dev}  />} />
+            return <Route key={dev.id} path={`/${dev.id}/invoice`} element={<Invoice dev={dev}  />} />
           }
           )
-        } */}
+        }
       </Routes>  
     
       

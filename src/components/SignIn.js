@@ -15,7 +15,7 @@ const SignIn = ({ changeUser }) => {
     } else {
       const user = await response.json()
       changeUser(user)
-      navigate(`/${user.id}/service`)
+      navigate(`/${user.id}/invoice`)
     }
    
   }

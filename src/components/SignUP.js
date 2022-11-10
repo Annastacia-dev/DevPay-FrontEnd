@@ -55,7 +55,7 @@ const SignUp = () => {
     const handleChange = (e) => {
         setDeveloper({
             ...developer,
-            [e.target.name]: e.target.value
+            [e.target.name] : e.target.value
         })
     }
 
