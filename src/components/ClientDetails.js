@@ -3,6 +3,7 @@ import React from 'react'
 function ClientDetails({ clientName, clientAddress }) {
     return (
         <>
+         <h1>hello world</h1>
 
             <section className="mt-10">
                 <h2 className="text-2xl uppercase font-bold mb-1">{clientName}</h2>

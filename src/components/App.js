@@ -7,6 +7,9 @@ import Service from './Service';
 import SignIn from './SignIn';
 import SignUp from './SignUP'
 import '../css/App.css'
+import Invoice from './Invoice';
+import ClientForm from './ClientForm';
+
 
 
 
@@ -39,7 +42,9 @@ function App () {
          <Route  path='/home' element={<Home />} ></Route>
         <Route  path='/' element={<Home />} ></Route>
         <Route  path='/about' element={<About />} ></Route>
+        <Route  path='/clientform' element={<ClientForm/>} ></Route>
         <Route  path='/service' element={<Service/>} ></Route>
+        <Route  path='/invoice' element={<Invoice/>} ></Route>
         <Route path="/signin" element={<SignIn changeUser={changeUser} />} />
         <Route path="/signup" element={<SignUp />} />      
         {/* {

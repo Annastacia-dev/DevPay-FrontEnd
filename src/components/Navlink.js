@@ -19,7 +19,14 @@ function Navlink() {
                                 <NavLink className="nav-link" to="/about">About</NavLink>
                             </li>
                             <li className="nav-item me-4 fw-bold fs-5">
+                                <NavLink className="nav-link" to="/clientform">Clients</NavLink>
+                            </li>
+                            <li className="nav-item me-4 fw-bold fs-5">
                                 <NavLink className="nav-link" to="/service">Service</NavLink>
+                            </li>
+                           
+                            <li className="nav-item me-4 fw-bold fs-5">
+                                <NavLink className="nav-link" to="/invoice">Invoice</NavLink>
                             </li>
                             <div  className='nav-item my-2 my-md-0 ml-auto'>
                             <NavLink className="btn btn-outline-dark me-5 mx-auto mr-4 ml-2" to="/signup">
