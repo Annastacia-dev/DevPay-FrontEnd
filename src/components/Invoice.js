@@ -1,27 +1,20 @@
 
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import ClientDetails from './ClientDetails'
 import Header from './Header'
 import Dates from './Dates'
 import Job from './Job'
-import Footer from './Footer'
+// import Footer from './Footer'
 import Developer from './Developer'
 import Table from './Table.js'
 import '../css/App.css'
 import TableForm from './TableForm'
 
-function Invoice() {
+function Invoice({ dev }) {
 
-    const [showInvoice, setShowInvoice] = useState(true)
-    const [name, setName] = useState('Elon Musks')
-    const [address, setAddress] = useState('Nairobi')
-    const [email, setEmail] = useState('elon@gmail.com')
-    const [phone, setPhone] = useState('-8889-98-87777')
-    const [github, setGithub] = useState("htttps//spacex.com")
+    const [showInvoice, setShowInvoice] = useState(false)
     const [bankName, setBankName] = useState('KCB')
     const [bankAccount, setBankAccount] = useState('34567754')
-    const [clientName, setClientName] = useState('John Doe')
-    const [clientAddress, setClientAddress] = useState('Kisumu')
     const [invoiceNumber, setInvoiceNumber] = useState('1234562')
     const [invoiceDate, setInvoiceDate] = useState('22/10/2022')
     const [dueDate, setDueDate] = useState('30/11/2022')
@@ -30,6 +23,43 @@ function Invoice() {
     const [rate, setRate] = useState("")
     const [price, setPrice] = useState("")
     const [amount, setAmount] = useState("")
+   const  [list, setList] = useState([])
+
+    const [client, setClient] = useState({
+        name: '',
+        email: '',
+        phone_number: '',
+        location: '',
+        developer_id: dev.id
+    })
+    function handleSubmit(e) {
+        e.preventDefault()
+        fetch('http://localhost:9292/clients', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(client)
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+        setClient({
+            name: '',
+            email: '',
+            phone_number: '',
+            location: '',
+            developer_id: dev.id
+        })
+    }
+
+    const handleChange = (e) => {
+        setClient({
+            ...client,
+            [e.target.name]: e.target.value
+        })
+    }
+
+
 
     const handlePrint = () => { window.print() }
     return (
@@ -39,20 +69,22 @@ function Invoice() {
                 {
                     showInvoice ? (
                         <div>
+                            {/* Developer's Details */}
+
                             <Header handlePrint={handlePrint} />
-                            <Developer name={name} address={address} />
-                            <ClientDetails clientName={clientName} clientAddress={clientAddress} />
+                            <Developer name={dev.name} address={dev.location} />
+                            <ClientDetails clientName={client.name} clientAddress={client.location} />
                             <Dates invoiceDate={invoiceDate} invoiceNumber={invoiceNumber} dueDate={dueDate} />
-                            < Table description={description}  rate={rate} price={price} amount={amount}/>
+                            < Table description={description} rate={rate} price={price} amount={amount}  list={list}/>
                             <Job notes={job} />
-                            <Footer
-                                name={name}
-                                email={email}
-                                address={address}
+                            {/* <Footer
+                                name={dev.name}
+                                email={dev.email}
+                                address={dev.location}
                                 bankName={bankName}
                                 backAccount={bankAccount}
-                                phoneNumber={phone}
-                            />
+                                phoneNumber={dev.phone_number}
+                            /> */}
 
                             <button onClick={() => setShowInvoice(false)}
                                 className=" mt-3 bg-blue-500 text-white  font-bold py-2 px-8 roundend shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300">Edit</button>
@@ -71,8 +103,8 @@ function Invoice() {
                                             id="name"
                                             placeholder="Enter your name"
                                             autoComplete="off"
-                                            value={name}
-                                            onChange={(e) => setName(e.target.value)}
+                                            value={dev.name}
+
                                         />
                                     </div>
 
@@ -84,12 +116,12 @@ function Invoice() {
                                             id="address"
                                             placeholder="Enter your address"
                                             autoComplete="off"
-                                            value={address}
-                                            onChange={(e) => setAddress(e.target.value)}
+                                            value={dev.location}
+
                                         />
                                     </div>
                                 </article>
-                                <article className="md:grid grid-cols-3 gap-10 mt-3">
+                                <article className="md:grid grid-cols-2 gap-10 mt-3">
                                     <div className="flex flex-col">
                                         <label htmlFor="email">Enter your email</label>
                                         <input
@@ -98,23 +130,12 @@ function Invoice() {
                                             id="email"
                                             placeholder="Enter your email"
                                             autoComplete="off"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
+                                            value={dev.email}
+
                                         />
                                     </div>
 
-                                    <div className="flex flex-col">
-                                        <label htmlFor="website">Enter your github</label>
-                                        <input
-                                            type="url"
-                                            name="website"
-                                            id="website"
-                                            placeholder="Enter your website"
-                                            autoComplete="off"
-                                            value={github}
-                                            onChange={(e) => setGithub(e.target.value)}
-                                        />
-                                    </div>
+
 
                                     <div className="flex flex-col">
                                         <label htmlFor="phone">Enter your phone</label>
@@ -124,8 +145,8 @@ function Invoice() {
                                             id="phone"
                                             placeholder="Enter your phone"
                                             autoComplete="off"
-                                            value={phone}
-                                            onChange={(e) => setPhone(e.target.value)}
+                                            value={dev.phone_number}
+
                                         />
                                     </div>
                                 </article>
@@ -159,35 +180,58 @@ function Invoice() {
                                     </div>
                                 </article>
 
-                                <article className="md:grid grid-cols-2 gap-10 md:mt-16">
-                                    <div className="flex flex-col">
+
+                                {/* Clients details */}
+                                <article className=" gap-10 md:mt-16">
+
+                                    <form  onSubmit={handleSubmit}>
+                                    <div className="flex flex-col mb-3">
                                         <label htmlFor="clientName">Enter your client's name</label>
-                                        <input
-                                            type="text"
-                                            name="clientName"
-                                            id="clientName"
-                                            placeholder="Enter your client's name"
-                                            autoComplete="off"
-                                            value={clientName}
-                                            onChange={(e) => setClientName(e.target.value)}
-                                        />
+                                        <input name="name" type="text" placeholder="Name" autoFocus={true} value={client.name} onChange={handleChange} />
                                     </div>
 
-                                    <div className="flex flex-col">
-                                        <label htmlFor="clientAddress">
-                                            Enter your client's address
+
+                                    <div className="flex flex-col mb-3">
+                                        <label htmlFor="">
+                                            Enter your client's Email
                                         </label>
-                                        <input
-                                            type="text"
-                                            name="clientAddress"
-                                            id="clientAddress"
-                                            placeholder="Enter your client's address"
-                                            autoComplete="off"
-                                            value={clientAddress}
-                                            onChange={(e) => setClientAddress(e.target.value)}
-                                        />
+                                        <input name="email" type="text" placeholder="Email" autoFocus={true} value={client.email} onChange={handleChange} />
+                                    </div>   
+
+
+                                    <div className="flex flex-col mb-3">
+                                        <label htmlFor="client Phone Number">
+                                            Enter your client's Phone Number
+                                        </label>
+                                        <input name="phone_number" type="text" placeholder="Phone Number" autoFocus={true} value={client.phone_number} onChange={handleChange} />
                                     </div>
-                                </article>
+
+                                    <div className="flex flex-col mb-3">
+                                        <label htmlFor="clientAddress">
+                                            Enter your client's location
+                                        </label>
+                                        <input name="location" type="text" placeholder="Location" autoFocus={true} value={client.location} onChange={handleChange} />
+                                       
+                                    </div>
+
+
+                                    <div className="flex flex-col mb-3">
+                                        <label htmlFor="clientAddress">
+                                            Developer Id
+                                        </label>
+                                        <input name="number" type="number" placeholder="Developer_id" autoComplete='true' value={dev.id}  />
+                                    </div>
+                                    <button type='submit' className="btn btn-success" onClick={handleSubmit}>Post</button>
+                                    </form>           
+                                </article>  
+                               
+
+
+
+
+
+
+                                {/* Invoice Details  */}
 
                                 <article className="md:grid grid-cols-3 gap-10 mt-4">
                                     <div className="flex flex-col">
@@ -229,6 +273,10 @@ function Invoice() {
                                         />
                                     </div>
 
+
+
+
+
                                 </article>
 
                                 <article>
@@ -241,10 +289,13 @@ function Invoice() {
                                         setPrice={setPrice}
                                         amount={amount}
                                         setAmount={setAmount}
-                                       
+                                        list={list}
+                                        setList={setList}
+
                                     />
                                 </article>
 
+                                                                 
 
                                 <label htmlFor="job">Job Description</label>
                                 <textarea
@@ -259,6 +310,7 @@ function Invoice() {
                                     onChange={(e) => setJob(e.target.value)}>
 
                                 </textarea>
+                               
 
                                 <button onClick={() => setShowInvoice(true)}
                                     className="bg-blue-500 text-white  font-bold py-2 px-8 roundend shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300">Preview</button>

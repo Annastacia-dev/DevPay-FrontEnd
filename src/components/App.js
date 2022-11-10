@@ -1,14 +1,12 @@
 import React,{useEffect,useState} from 'react'
 import { Route,Routes} from "react-router-dom";
 import Navlink from './Navlink';
-import ClientsForm from './ClientsForm';
 import Invoice from './Invoice';
 import About from './About';
 import Service from './Service'; 
 import SignIn from './SignIn';
 import SignUp from './SignUP'
 import '../css/App.css'
-import Footer from './Footer';
 import Home from './Home';
 
 function App () {
@@ -30,12 +28,17 @@ function App () {
       .then(data => setDevelopers(data))
   }, [])
 
+
+  // Client details 
+
+  
+
   return (
     
     <div>
     
      < Navlink/>
-     < Footer />
+    
       <Routes>
 
         <Route path='/home' element={<Home />} ></Route>
@@ -46,7 +49,7 @@ function App () {
          <Route  path='/home' element={<Home />} ></Route>
         <Route  path='/' element={<Home />} ></Route>
         <Route  path='/about' element={<About />} ></Route>
-        <Route  path='/clients' element={<ClientsForm />} ></Route>
+       
         <Route  path='/service' element={<Service />} ></Route>
 
         <Route path="/signin" element={<SignIn changeUser={changeUser} />} />

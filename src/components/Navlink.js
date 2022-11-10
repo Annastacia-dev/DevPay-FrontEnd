@@ -18,9 +18,7 @@ function Navlink() {
                             <li className="nav-item me-4 fw-bold  fs-5" >
                                 <NavLink className="nav-link" to="/about">About</NavLink>
                             </li>
-                            <li className="nav-item me-4 fw-bold fs-5">
-                                <NavLink className="nav-link" to="/clients">Clients</NavLink>
-                            </li>
+                           
                             <li className="nav-item me-4 fw-bold fs-5">
                                 <NavLink className="nav-link" to="/service">Service</NavLink>
                             </li>
