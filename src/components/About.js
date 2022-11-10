@@ -3,16 +3,56 @@ import "./About.css";
 
 function About() {
   return (
-    <div className="about">
-      
-      <h2 id="us">About Us!</h2>
-      <h3>Welcome To <span>DevPay</span></h3>
-      <p><span>DevPay</span> is a Professional <span>Payment app</span> Platform. Here we will provide you only, which you will like very much. We're dedicated to providing you the best of <span>Payment app</span>, with a focus on dependability and <span>invoice and making payments</span>. We're working to turn our passion for <span>Payment app</span> into a booming online website. We hope you enjoy our <span>Payment app</span> as much as we enjoy offering them to you.</p>
-      <p>We will keep posting more important posts on my Website for all of you. Please give your support and love.</p>
-      <p>Thanks For Visiting Our Site<br></br>
-      <span>Have a nice day!</span></p>
-    
+    <>
+    <div>
+          <div className="about-1">
+            <h1> ABOUT US </h1>
+            <h1>Welcome To DevPay</h1>
+          </div>
+      <div id="about-2">
+      <div className="content-box-lg">
+          <div className="container">
+              <div className="row">
+                  <div className="col-md-4">
+                    <div className="about-item text-center">
+                      <i className="fa fa-book"></i>
+                      <h3>MISSION</h3>
+                      <hr></hr>
+                      <p>DevPay is a Professional Payment app Platform. Here we will provide you with opportunities and services, which you will like very much. We're dedicated to providing you the best, with a focus on dependability and accountability . We're working to turn our passion for Developing apps into a booming online website. </p>
+                      </div>
+                      
+                  </div>
+                  <div className="col-md-4">
+                    <div className="about-item text-center">
+                      <i className="fa fa-globe"></i>
+                      <h3>VISION</h3>
+                      <hr></hr>
+                      <p>We believe that good design is powerful, hardwork is esseintial and exploring the unknown is important.Our vision mainly focuses on ensuring providing a platform where a developer gets benefits for his or her work and also providing a platform where the developer can get many job opportunities.</p>
+                      </div>
+                  </div>
+                  <div className="col-md-4">
+                    <div className="about-item text-center">
+                      <i className="fa fa-pencil"></i>
+                      <h3>ACHIEVEMENTS</h3>
+                      <hr></hr>
+                      <p>We as DevPay have managed to solve the problem of many Developers not getting paid for their hardwork through offering services that ensure that every developer that uses our platform is fully compensated.We have been complimented by top freelancing platforms like UpStack,UpWork for our exemplary services.</p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
     </div>
+    
+ 
+// <footer class="text-center">
+// <p>We will keep posting more important posts on my Website for all of you. Please give your support and love.</p>
+// <p>Thanks For Visiting Our Site<br></br>
+Have a nice day!</p>
+// <p>Copyright &copy; 2022 All rights reserved by DevPay.Inc</p>
+// </footer>
+</>
+
   );
 }
 
