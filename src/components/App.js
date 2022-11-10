@@ -1,12 +1,12 @@
 import React,{useEffect,useState} from 'react'
 import { Route,Routes} from "react-router-dom";
 import Navlink from './Navlink';
-// import Home from './Home';
+import ClientsForm from './ClientsForm';
+import Invoice from './Invoice';
 import About from './About';
 import Service from './Service'; 
 import SignIn from './SignIn';
 import SignUp from './SignUP'
-import Description from './Description';
 import '../css/App.css'
 import Footer from './Footer';
 import Home from './Home';
@@ -46,12 +46,14 @@ function App () {
          <Route  path='/home' element={<Home />} ></Route>
         <Route  path='/' element={<Home />} ></Route>
         <Route  path='/about' element={<About />} ></Route>
+        <Route  path='/clients' element={<ClientsForm />} ></Route>
+        <Route  path='/service' element={<Service />} ></Route>
 
         <Route path="/signin" element={<SignIn changeUser={changeUser} />} />
         <Route path="/signup" element={<SignUp />} />      
         {
           developers.map(dev => {
-            return <Route key={dev.id} path={`/${dev.id}/service`} element={<Service dev={dev}  />} />
+            return <Route key={dev.id} path={`/${dev.id}/invoice`} element={<Invoice dev={dev}  />} />
           }
           )
         }
