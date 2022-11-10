@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Developer({ name, address }) {
+   
     return (
         <>
             <section className='flex  flex-col items-end justify-end'>

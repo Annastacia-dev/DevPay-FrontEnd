@@ -1,6 +1,35 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 function ClientsForm() {
+    const [client, setClient] = useState({
+        name: '',
+        email: '',
+        phone_number: '',
+        location: '',
+    })
+    
+    function handleSubmit(e) {
+        e.preventDefault();
+        fetch('http://localhost:9292/clients', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(client)
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        // clear form
+        setClient({
+            name: '',
+            email: '',
+            password: '',
+            location: '',
+            phone_number: ''
+        })
+      
+    }
+    
     return (
         <div>
             <section className="inner-page">
@@ -47,7 +76,7 @@ function ClientsForm() {
                                     </div>
 
 
-                                    <button type="button" className="btn btn-primary btn-block mb-4">Register</button>
+                                    <button type="submit" className="btn btn-primary btn-block mb-4" >Register</button>
 
 
                                     <div className="text-center">

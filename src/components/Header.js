@@ -27,13 +27,6 @@ function Header({handlePrint}) {
                 </div>
             </header>
 
-
-
-
-
-
-
-
         </>
     )
 }
