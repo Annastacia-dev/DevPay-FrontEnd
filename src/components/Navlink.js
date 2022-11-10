@@ -8,7 +8,7 @@ function Navlink() {
         <>
             <Navbar className="navbar" bg="light" expand="lg">
                 <Container>
-                    <NavLink  className= "nav-link  fw-bold fs-1" to="/home">Dev Pay</NavLink>
+                    <NavLink  className= "nav-link  fw-bold fs-1" to="/home">DevPay</NavLink>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
@@ -26,8 +26,6 @@ function Navlink() {
                                 SignUP</NavLink>
                            </div> 
                            
-                             
-
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
