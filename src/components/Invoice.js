@@ -287,20 +287,6 @@ const handleSubmit = (e) => {
                                     onChange={handleServiceChange}>
 
                                 </textarea>
-                                <div className="flex flex-col">
-                                       <span>
-                                        <button>
-                                            Add Client
-                                        </button>
-                                        <button>
-                                            Add Service
-                                        </button>
-                                        <button>
-                                            Add Invoice
-                                        </button>
-                                       </span>
-                                    </div>
-
                                 <button onClick={() => setShowInvoice(true)}
                                     className="bg-blue-500 text-white  font-bold py-2 px-8 roundend shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300"
                                     >Preview</button>
