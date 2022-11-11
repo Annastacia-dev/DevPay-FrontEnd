@@ -1,4 +1,7 @@
-import React, { useEffect } from 'react'
+import React, {useState,useEffect } from 'react'
+import { v4 as uuidv4 } from "uuid"
+import { AiOutlineDelete,AiOutlineEdit } from "react-icons/ai"
+
 
 function TableForm({
   description,
@@ -10,10 +13,14 @@ function TableForm({
   amount,
   setAmount,
   list,
-  setList
+  setList,
+  total,
+  setTotal,
 
 
 }) {
+
+  const [isEditing, setIsEditing] = useState(false)
 
   // Calculate items amount function
   useEffect(() => {
@@ -22,11 +29,31 @@ function TableForm({
     }
 
     calculateAmount(amount)
-  }, [amount, price, rate, setAmount])
+  }, [amount, price, rate,setAmount])
 
+  // Calculate total amount of items in table
+  useEffect(() => {
+    let rows = document.querySelectorAll(".amount")
+    let sum = 0
+
+    for (let i = 0; i < rows.length; i++) {
+      if (rows[i].className === "amount") {
+        sum += isNaN(rows[i].innerHTML) ? 0 : parseInt(rows[i].innerHTML)
+        setTotal(sum)
+      }
+    }
+  })
+
+
+  // Submit form function
   const handleSubmit = (e) => {
     e.preventDefault()
-      const newItems = { 
+
+    if (!description || !rate || !price) {
+      alert("Please fill in all inputs")
+    } else {
+      const newItems = {
+        id: uuidv4(),
         description,
         rate,
         price,
@@ -37,11 +64,21 @@ function TableForm({
       setPrice("")
       setAmount("")
       setList([...list, newItems])
-      console.log(list)
+      setIsEditing(false)
     }
-  
+  }
+  // Edit function
+  const editRow = (id) => {
+    const editingRow = list.find((row) => row.id === id)
+    setList(list.filter((row) => row.id !== id))
+    setIsEditing(true)
+    setDescription(editingRow.description)
+    setRate(editingRow.rate)
+    setPrice(editingRow.price)
+  }
 
-
+ // Delete function
+ const deleteRow = (id) => setList(list.filter((row) => row.id !== id))
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -89,7 +126,7 @@ function TableForm({
           <p>{amount}</p>
         </div>
       </div>
-      <button type='submit' className="btn btn-primary mt-4 mb-3" onClick={handleSubmit}>Add Items</button>
+      <button type='submit' className="btn btn-primary mt-4 mb-3" onClick={handleSubmit}>{isEditing ? "Editing " : "Add Work"}</button>
       </form>
 
       <table width="100%" className="mb-10">
@@ -99,6 +136,7 @@ function TableForm({
             <td className="font-bold">Rate</td>
             <td className="font-bold">Price</td>
             <td className="font-bold">Amount</td>
+            
           </tr>
         </thead>
         {list.map(({ id, description, rate, price, amount }) => (
@@ -108,12 +146,28 @@ function TableForm({
                 <td>{description}</td>
                 <td>{rate}</td>
                 <td>{price}</td>
-                <td className="amount">{amount}</td>               
+                <td className="amount">{amount}</td>
+                <td>
+                  <button onClick={() => editRow(id)}>
+                    <AiOutlineEdit className="text-green-500 font-bold text-xl" />
+                  </button>
+                </td>
+                <td>
+                  <button onClick={() => deleteRow(id)}>
+                    <AiOutlineDelete className="text-red-500 font-bold text-xl" />
+                  </button>
+                </td>            
               </tr>
             </tbody>
           </React.Fragment>
         ))}
       </table>
+      <div>
+        <h2 className="flex items-end justify-end text-gray-800 text-4xl font-bold">
+          $ {total}
+        </h2>
+      </div>
+     
     
     </>
 
