@@ -14,15 +14,7 @@ function Header({handlePrint}) {
                         <li>
                             <button  onClick={handlePrint} className='btn btn-print'>Print</button>
                         </li>
-                        <li>
-                            <button className='btn btn-download'>
-                                Download
-                            </button>
-                        </li>
-                        <li><button className='btn btn-send'>Send
-
-                        </button>
-                        </li>
+                        
                     </ul>
                 </div>
             </header>
