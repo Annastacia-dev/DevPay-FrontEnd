@@ -1,12 +1,14 @@
 import React from "react";
-import "./About.css";
+import Footer from "./Footer";
+import NavBar from "./NavBar";
+import '../css/About.css';
 
 function About() {
   return (
     <>
+      <NavBar />
     <div>
           <div className="about-1">
-            <h1> ABOUT US </h1>
             <h1>Welcome To DevPay</h1>
           </div>
       <div id="about-2">
@@ -43,14 +45,8 @@ function About() {
           </div>
       </div>
     </div>
-    
- 
-// <footer class="text-center">
-// <p>We will keep posting more important posts on my Website for all of you. Please give your support and love.</p>
-// <p>Thanks For Visiting Our Site<br></br>
-Have a nice day!</p>
- <p>Copyright &copy; 2022 All rights reserved by DevPay.Inc</p>
-// </footer>
+
+    <Footer />
 </>
 
   );

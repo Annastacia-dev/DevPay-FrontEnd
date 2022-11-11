@@ -1,12 +1,14 @@
 import React,{useEffect,useState} from 'react'
 import { Route,Routes} from "react-router-dom";
-import Navlink from './Navlink';
 import Invoice from './Invoice';
 import About from './About';
-import Service from './Service'; 
 import SignIn from './SignIn';
-import SignUp from './SignUP'
-import '../css/App.css'
+import SignUp from './SignUp'
+import Dashboard from './Dashboard';
+import Invoices from './Invoices';
+import Services from './Services';
+import Clients from './Clients';
+import Profile from './Profile';
 import Home from './Home';
 
 function App () {
@@ -28,35 +30,30 @@ function App () {
       .then(data => setDevelopers(data))
   }, [])
 
-
-  // Client details 
-
-  
-
   return (
     
     <div>
     
-     < Navlink/>
     
       <Routes>
 
-        <Route path='/home' element={<Home />} ></Route>
-        <Route path="/" exact component={Home} />
-        <Route path='/services' element={<Service />} ></Route>
-        <Route path='/about' element={<About />} ></Route>
-
-         <Route  path='/home' element={<Home />} ></Route>
-        <Route  path='/' element={<Home />} ></Route>
-        <Route  path='/about' element={<About />} ></Route>
-       
-        <Route  path='/service' element={<Service />} ></Route>
-
+        <Route path='/' element={<Home />} ></Route>
+        <Route path='/about' element={<About user={currentUser} />} ></Route>
         <Route path="/signin" element={<SignIn changeUser={changeUser} />} />
         <Route path="/signup" element={<SignUp />} />      
         {
           developers.map(dev => {
-            return <Route key={dev.id} path={`/${dev.id}/invoice`} element={<Invoice dev={dev}  />} />
+            return (
+              < >
+              
+            <Route key={dev.id} path={`/${dev.id}/invoice`} element={<Invoice dev={dev}  />} />
+            <Route key={dev.id} path={`/${dev.id}/dashboard`} element={<Dashboard dev={dev} />} />
+            <Route key={dev.id} path={`/${dev.id}/invoices`} element={<Invoices dev={dev} />} />
+            <Route key={dev.id} path={`/${dev.id}/services`} element={<Services dev={dev} />} />
+            <Route key={dev.id} path={`/${dev.id}/clients`} element={<Clients dev={dev} />} />
+            <Route key={dev.id} path={`/${dev.id}/profile`} element={<Profile dev={dev} />} />
+            </>
+            )
           }
           )
         }
