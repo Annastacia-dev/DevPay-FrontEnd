@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Header({handlePrint}) {
+function Header({handlePrint, handleSubmit}) {
     return (
         <>
 
@@ -12,12 +12,33 @@ function Header({handlePrint}) {
                 <div>
                     <ul className='flex items-center justify-between flex wrap '>
                         <li>
-                            <button  onClick={handlePrint} className='btn btn-print'>Print</button>
+                            <button  onClick={handlePrint} className='invoice-btn btn btn-print'>
+                            <i className="fa-solid fa-print"></i>
+                                Print
+                                </button>
                         </li>
-                        
+                        <li>
+                            <button className='invoice-btn btn btn-download'>
+                            <i className="fa-solid fa-file-arrow-down"></i>
+                                Download
+                            </button>
+                        </li>
+                        <li><button onClick={handleSubmit} className='invoice-btn btn btn-send'>
+                        <i className="fa-solid fa-paper-plane"></i>
+                            Send
+
+                        </button>
+                        </li>
                     </ul>
                 </div>
             </header>
+
+
+
+
+
+
+
 
         </>
     )
