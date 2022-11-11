@@ -1,26 +1,29 @@
-// import React from 'react'
-
-// function Home (){
-//   return (
-//     <h1>Home</h1>
-//   )
-// }
-
-// export default Home
-
 import React from 'react'
-import { Link } from 'react-router-dom';
-// import Service from './Service';
-// import SignUp from './SignUP';
+import { Link } from 'react-router-dom'
+import NavBar from './NavBar'
+import Footer from './Footer'
+import '../css/Home.css'
+
+
 const Home = () => {
   return (
-    <><><div>
-      <h2 id='head'>
+    <>
+     < NavBar/>
+    <div className='home-background'>
+      <div className="home-content">
+      <h1>
         The Developers Invoicing Solution
-      </h2>
-    </div><div id='button'>
-        <Link to="/SignUp" className="btn1">Creat Invoice</Link>
-      </div></></>
+      </h1>
+      <p>
+        Do your development and let us handle the invoicing
+      </p>
+      <button>
+      <Link to='/signin'>Get Started</Link>  
+      </button>
+      </div>
+      </div>
+      <Footer />
+      </>
       
   )
 }
